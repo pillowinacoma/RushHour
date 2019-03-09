@@ -6,26 +6,47 @@ using namespace std;
 
 Parking::Parking(){
 	string s;
-	ifstream fichier("/home/chaoui/Bureau/L3/Lifap6/RushHour/Sujet/puzzle.txt", ios::in);
+	string fstline;
+	ifstream fichier("/home/chaoui/Bureau/L3/Lifap6/RushHour/Sujet/puzzle.txt",ios::in);
 	getline(fichier,fstline);
+	cout<<"la valuer de la premiere ligne"<<fstline<<endl;
 	int i = 0;
 	while(getline(fichier,s)){
-		voiture v ;
-		v.ligne=s[0];
-		v.colonne=s[2];
-		v.longueur=s[4];
-		v.position=s[6];
-		voitures.push_back(v);
+		cout<<"la valeur de la ligne en cour :"<<s<<endl;
+		voiture v={s[0],s[1],s[2],s[3]};
+		cout<<v.ligne<<" "<<s[0]<<endl;
+		cout<<v.colonne<<" "<<s[1]<<endl;
+		cout<<v.longueur<<" "<<s[2]<<endl;
+		cout<<v.position<<" "<<s[3]<<endl;
+		//voitures[i].ligne=s[0];
+		//voitures[i].colonne=s[1];
+		//voitures[i].longueur=s[2];
+		//voitures[i].position=s[3];
+		voitures.push_back({s[0],s[1],s[2],s[3]});
 		i++;
 	}
 
 }
- 	
 
-Parking::void Afficher(){
-	string res;
-	int grille [][] = new  int [6][6];
-	for(int i = 0 ; i < voitures.size() ; i++){
+
+/*void Parking::retournerligne(){
+	string fstline;
+	string s,s1,s2;
+	ifstream fichier("/home/chaoui/Bureau/L3/Lifap6/RushHour/src/ff.txt");
+	if(fichier){cout<<"le fichier a été lu avec succes"<<endl;}
+	else{cout<<"ca a merder"<<endl;}
+	getline(fichier,fstline);
+	getline(fichier,s);
+	getline(fichier,s1);
+	getline(fichier,s2);
+	cout<<"la valeur de la premiere ligne lu est :"<<fstline<<s<<s1<<s2<<endl;
+}*/
+	
+
+void Parking::Afficher(){
+	/*string res;
+	int ** grille = new int[6][6];
+	for(unsigned int i = 0 ; i < voitures.size() ; i++){
 		if(voitures[i].position == 0){//vertical
 			for(int j = 0 ; j < voitures[i].longueur ; j++){
 				grille[voitures[i].ligne][voitures[i].colonne+j] = i;
@@ -48,5 +69,7 @@ Parking::void Afficher(){
 		res+="*\n";
 		}
 	}
-	res += "********\0";
+	res += "********\0";*/
 }
+
+Parking::~Parking(){}
