@@ -13,7 +13,7 @@ Parking::Parking(){
 	int i = 0;
 	while(getline(fichier,s)){
 		cout<<"la valeur de la ligne en cour :"<<s<<endl;
-		voiture v={s[0],s[1],s[2],s[3]};
+		/*voiture v={s[0],s[1],s[2],s[3]};
 		cout<<v.ligne<<" "<<s[0]<<endl;
 		cout<<v.colonne<<" "<<s[1]<<endl;
 		cout<<v.longueur<<" "<<s[2]<<endl;
@@ -22,25 +22,31 @@ Parking::Parking(){
 		//voitures[i].colonne=s[1];
 		//voitures[i].longueur=s[2];
 		//voitures[i].position=s[3];
-		voitures.push_back({s[0],s[1],s[2],s[3]});
+		voitures.push_back({s[0],s[1],s[2],s[3]});*/
 		i++;
 	}
 
 }
 
 
-/*void Parking::retournerligne(){
+void Parking::retournerligne(){
 	string fstline;
-	string s,s1,s2;
+	string s,s1;
 	ifstream fichier("/home/chaoui/Bureau/L3/Lifap6/RushHour/src/ff.txt");
 	if(fichier){cout<<"le fichier a été lu avec succes"<<endl;}
 	else{cout<<"ca a merder"<<endl;}
 	getline(fichier,fstline);
 	getline(fichier,s);
 	getline(fichier,s1);
-	getline(fichier,s2);
-	cout<<"la valeur de la premiere ligne lu est :"<<fstline<<s<<s1<<s2<<endl;
-}*/
+	voiture v(fstline[0],fstline[1],fstline[2],fstline[3]);
+	v.ligne=fstline[0];
+	v.colonne=fstline[1];
+	v.longueur=fstline[2];
+	v.position=fstline[3];
+	cout<<fstline[0]<<fstline[1]<<fstline[2]<<fstline[3];
+	cout<<" "<<v.ligne<<" "<<v.colonne<<" "<<v.longueur<<" "<<v.position<<endl;
+	voitures.push_back(v);
+}
 	
 
 void Parking::Afficher(){
