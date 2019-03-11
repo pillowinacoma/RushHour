@@ -6,9 +6,8 @@
 using namespace std;
 
 int main() {
-
 	Parking p = Parking();
-	p.Afficher();
-
+	p.deplacement(4,avant);
+	p.deplacement(7,arriere);
 	return 0 ;
 }

@@ -22,7 +22,7 @@ Parking::Parking(){
 void Parking::retournerligne(){
 	string fstline;
 	string s,s1;
-	ifstream fichier("/home/sbaai/Bureau/GitProject/RushHour/src/ff.txt");
+	ifstream fichier("/home/chaoui/Bureau/L3/Lifap6/RushHour/src/ff.txt");
 	if(fichier){cout<<"le fichier a été lu avec succes"<<endl;}
 	else{cout<<"ca a merder"<<endl;}
 	getline(fichier,fstline);
@@ -40,9 +40,6 @@ void Parking::retournerligne(){
 
 
 void Parking::Afficher(){
-	string res;
-	int grille[6][6] = {{0}};
-
 	for(unsigned int i = 0 ; i < voitures.size()-1 ; i++){
 		if(voitures[i].position == 0){//vertical
 			for(int j = 0 ; j < voitures[i].longueur ; j++){
@@ -61,6 +58,39 @@ void Parking::Afficher(){
 			cout<<grille[i][j]<<' ';
 		}std::cout << endl;
 	}
+}
+
+void Parking::deplacer(int numvehicule,deplace d){
+	if(voitures[numvehicule].position == 1){//horizentale
+		if(d == avant && 
+		grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne+voitures[numvehicule].longueur+1] == 0){
+			grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne]=0;
+			voitures[numvehicule].colonne++;
+		}
+		if(d == arriere && 
+		grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne-1] == 0){
+			voitures[numvehicule].colonne--;			
+			grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne+voitures[numvehicule].longueur]=0;
+		}
+	}
+	if(voitures[numvehicule].position == 0){//vertical
+		if(d == avant && 
+		grille[voitures[numvehicule].ligne+voitures[numvehicule].longueur+1][voitures[numvehicule].colonne] == 0){
+			grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne]=0;
+			voitures[numvehicule].ligne++;
+		}
+		if(d == arriere && 
+		grille[voitures[numvehicule].ligne-1][voitures[numvehicule].colonne] == 0){
+			grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne+voitures[numvehicule].longueur]=0;
+			voitures[numvehicule].colonne--;
+		}
+	}
+}
+
+void Parking::deplacement(int numvehicule,deplace d){
+	Afficher();
+	deplacer(numvehicule,d);
+	Afficher();
 }
 
 Parking::~Parking(){}

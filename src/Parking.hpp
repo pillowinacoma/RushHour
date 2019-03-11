@@ -20,15 +20,19 @@ struct sortie{
 	int x , y ;
 };
 
+enum deplace { avant , arriere};
+
 class Parking {
 	public:
 	vector<voiture> voitures;
-	sortie out;
+	sortie out;	
+	int grille[6][6] = {{0}};
 	Parking();
 	void Afficher();
+	void deplacement(int numvehicule,deplace d);
+	void deplacer(int numvehicule,deplace);
 	void retournerligne();
 	~Parking();
-	int valeur;
 };
 
 #endif
