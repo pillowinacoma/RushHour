@@ -7,19 +7,12 @@ using namespace std;
 Parking::Parking(){
 	string s;
 	string fstline;
-	ifstream fichier("/home/sbaai/Bureau/GitProject/RushHour/Sujet/puzzle.txt",ios::in);
+	ifstream fichier("/home/chaoui/Bureau/L3/Lifap6/RushHour/Sujet/puzzle.txt",ios::in);
 	getline(fichier,fstline);
-	cout<<"la valuer de la premiere ligne"<<fstline<<endl;
-	int i = 0;
+	out={fstline[0]-'0',fstline[1]-'0'};
 	while(getline(fichier,s)){
-		cout<<"la valeur de la ligne en cour :"<<s<<endl;
 		voiture v={s[0]-'0',s[1]-'0',s[2]-'0',s[3]-'0'};
-		cout<<v.ligne<<" "<<s[0]<<endl;
-		cout<<v.colonne<<" "<<s[1]<<endl;
-		cout<<v.longueur<<" "<<s[2]<<endl;
-		cout<<v.position<<" "<<s[3]<<endl;
-		voitures.push_back({s[0],s[1],s[2],s[3]});
-		i++;
+		voitures.push_back(v);
 	}
 
 
@@ -50,15 +43,15 @@ void Parking::Afficher(){
 	string res;
 	int grille[6][6] = {{0}};
 
-	for(unsigned int i = 0 ; i < voitures.size() ; i++){
+	for(unsigned int i = 0 ; i < voitures.size()-1 ; i++){
 		if(voitures[i].position == 0){//vertical
 			for(int j = 0 ; j < voitures[i].longueur ; j++){
-				grille[voitures[i].ligne][voitures[i].colonne+j] = 1;
+				grille[voitures[i].ligne+j][voitures[i].colonne] = i+1;
 			}
 		}
 		else if(voitures[i].position == 1){//horizental
 			for(int j = 0 ; j < voitures[i].longueur ; j++){
-				grille[1][1] = 1;
+				grille[voitures[i].ligne][voitures[i].colonne+j] = i+1;
 			}
 		}
 	}
