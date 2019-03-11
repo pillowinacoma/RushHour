@@ -61,7 +61,7 @@ void Parking::Afficher(){
 }
 
 void Parking::deplacer(int numvehicule,deplace d){
-	if(voitures[numvehicule].position == 0){//vertical
+	if(voitures[numvehicule].position == 0){//vertical ss
 		if(d == avant && 
 		grille[voitures[numvehicule].ligne+voitures[numvehicule].longueur][voitures[numvehicule].colonne] == 0){
 			cout<<"il est dans le cas d'avancer verticalement "<<endl;		
