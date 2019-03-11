@@ -61,7 +61,20 @@ void Parking::Afficher(){
 }
 
 void Parking::deplacer(int numvehicule,deplace d){
-	if(voitures[numvehicule].position == 1){//horizentale
+	if(voitures[numvehicule].position == 0){//vertical
+		if(d == avant && 
+		grille[voitures[numvehicule].ligne+voitures[numvehicule].longueur][voitures[numvehicule].colonne] == 0){
+			cout<<"il est dans le cas d'avancer verticalement "<<endl;		
+			grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne]=0;
+			voitures[numvehicule].ligne++;
+		}
+		if(d == arriere && 
+		grille[voitures[numvehicule].ligne-1][voitures[numvehicule].colonne] == 0){
+		grille[voitures[numvehicule].ligne+voitures[numvehicule].longueur-1][voitures[numvehicule].colonne]=0;			
+			voitures[numvehicule].ligne--;
+		}
+	}	
+	else if(voitures[numvehicule].position == 1){//horizentale
 		if(d == avant && 
 		grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne+voitures[numvehicule].longueur+1] == 0){
 			grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne]=0;
@@ -69,20 +82,9 @@ void Parking::deplacer(int numvehicule,deplace d){
 		}
 		if(d == arriere && 
 		grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne-1] == 0){
+			cout<<"il est dans le cas d'avancer verticalement "<<endl;	
 			voitures[numvehicule].colonne--;			
 			grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne+voitures[numvehicule].longueur]=0;
-		}
-	}
-	if(voitures[numvehicule].position == 0){//vertical
-		if(d == avant && 
-		grille[voitures[numvehicule].ligne+voitures[numvehicule].longueur+1][voitures[numvehicule].colonne] == 0){
-			grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne]=0;
-			voitures[numvehicule].ligne++;
-		}
-		if(d == arriere && 
-		grille[voitures[numvehicule].ligne-1][voitures[numvehicule].colonne] == 0){
-			grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne+voitures[numvehicule].longueur]=0;
-			voitures[numvehicule].colonne--;
 		}
 	}
 }

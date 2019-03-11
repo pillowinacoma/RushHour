@@ -20,7 +20,7 @@ struct sortie{
 	int x , y ;
 };
 
-enum deplace { avant , arriere};
+enum deplace {avant,arriere};
 
 class Parking {
 	public:
