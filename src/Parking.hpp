@@ -20,17 +20,27 @@ struct sortie{
 	int x , y ;
 };
 
+struct situaion{
+	voiture v;
+	int nb_avance;
+	int nb_recule;
+};
+
 enum deplace {avant,arriere};
 
 class Parking {
 	public:
 	vector<voiture> voitures;
+	vector<situation> situations;
 	sortie out;	
 	int grille[6][6] = {{0}};
 	Parking();
 	void Afficher();
 	void deplacement(int numvehicule,deplace d);
 	void deplacer(int numvehicule,deplace);
+	bool peut_avancer(int numvehicule);
+	bool peut_reculer(int numvehicule);
+	void situation_de_jeu();
 	void retournerligne();
 	~Parking();
 };

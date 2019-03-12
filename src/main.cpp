@@ -9,5 +9,8 @@ int main() {
 	Parking p = Parking();
 	p.deplacement(4,avant);
 	p.deplacement(4,arriere);
+	p.deplacement(7,avant);
+	p.deplacement(7,avant);
+	p.deplacement(7,arriere);
 	return 0;
 }
