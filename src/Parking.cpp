@@ -64,7 +64,6 @@ void Parking::deplacer(int numvehicule,deplace d){
 	if(voitures[numvehicule].position == 0){//vertical
 		if(d == avant && 
 		grille[voitures[numvehicule].ligne+voitures[numvehicule].longueur][voitures[numvehicule].colonne] == 0){
-			cout<<"il est dans le cas d'avancer verticalement "<<endl;		
 			grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne]=0;
 			voitures[numvehicule].ligne++;
 		}
@@ -82,7 +81,6 @@ void Parking::deplacer(int numvehicule,deplace d){
 		}
 		if(d == arriere && 
 		grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne-1] == 0){
-			cout<<"il est dans le cas d'avancer verticalement "<<endl;	
 			voitures[numvehicule].colonne--;			
 			grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne+voitures[numvehicule].longueur]=0;
 		}
@@ -125,15 +123,22 @@ bool Parking::peut_reculer(int numvehicule){
 
 
 void Parking::situation_de_jeu(){
-	for(unsigned int i=0;i<voitures.size();i++){
-		situations[i].nb_avance=0;
-		situations[i].nb_recule=0;
+	for(unsigned int i=0;i<voitures.size()-1;i++){
+		int nb_avance=0;
+		int nb_recule=0;
+		//cout<<"cest avant le premier while"<<endl;
 		while(peut_avancer(i)){
-			situations[i].nb_avance++;
+			//cout<<"cest dans le premier while"<<endl;
+			deplacer(i,avant);
+			nb_avance++;
 		}
 		while(peut_reculer(i)){
-			situations[i].nb_recule++;
+			//cout<<"cest dans le deusieme while"<<endl;
+			deplacer(i,arriere);
+			nb_recule++;
 		}
+		situation s = {voitures[i],nb_avance,nb_recule};
+		situations.push_back(s);
 	}
 }
 
