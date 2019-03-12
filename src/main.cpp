@@ -12,5 +12,9 @@ int main() {
 	p.deplacement(7,avant);
 	p.deplacement(7,avant);
 	p.deplacement(7,arriere);
+	if(p.peut_avancer(0)){cout<<"cest faux"<<endl;}
+	else{cout<<"ca marche "<<p.peut_avancer(0)<<endl;}
+	if(p.peut_reculer(7)){cout<<"cest faux"<<p.peut_reculer(7)<<endl;}
+	else{cout<<"ca marche "<<p.peut_reculer(7)<<endl;}
 	return 0;
 }

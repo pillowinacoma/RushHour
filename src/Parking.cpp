@@ -123,6 +123,7 @@ bool Parking::peut_reculer(int numvehicule){
 	return flag;
 }
 
+
 void Parking::situation_de_jeu(){
 	for(unsigned int i=0;i<voitures.size();i++){
 		situations[i].nb_avance=0;
@@ -135,6 +136,7 @@ void Parking::situation_de_jeu(){
 		}
 	}
 }
+
 
 void Parking::deplacement(int numvehicule,deplace d){
 	Afficher();
