@@ -90,33 +90,37 @@ void Parking::deplacer(int numvehicule,deplace d){
 }
 
 bool Parking::peut_avancer(int numvehicule){
+	bool flag;	
 	if(voitures[numvehicule].position == 0){//vertical
 		if(grille[voitures[numvehicule].ligne+voitures[numvehicule].longueur][voitures[numvehicule].colonne] == 0){
-			return true;
+			flag=true;
 		}
-		else return false 
+		else flag=false; 
 	}
 	if(voitures[numvehicule].position == 1){//horizentale
 		if(grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne+voitures[numvehicule].longueur+1] == 0){
-			return true;
+			flag=true;
 		}
-		else return false;
+		else flag=false;
 	}
+	return flag;
 }
 
 bool Parking::peut_reculer(int numvehicule){
+	bool flag;
 	if(voitures[numvehicule].position == 0){//vertical
 		if(grille[voitures[numvehicule].ligne-1][voitures[numvehicule].colonne] == 0){
-			return true;
+			flag=true;
 		}
-		else return false;
+		else flag=false;
 	}
 	if(voitures[numvehicule].position == 1){//horizentale
 		if(grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne-1] == 0){
-			return true;
+			flag=true;
 		}
-		else return false;
+		else flag=false;
 	}
+	return flag;
 }
 
 void Parking::situation_de_jeu(){

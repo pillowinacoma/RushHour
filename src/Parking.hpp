@@ -20,7 +20,7 @@ struct sortie{
 	int x , y ;
 };
 
-struct situaion{
+struct situation{
 	voiture v;
 	int nb_avance;
 	int nb_recule;
