@@ -7,22 +7,20 @@ using namespace std;
 Parking::Parking(){
 	string s;
 	string fstline;
-	ifstream fichier("/home/chaoui/Bureau/L3/Lifap6/RushHour/Sujet/puzzle.txt",ios::in);
+	ifstream fichier("../Sujet/puzzle.txt",ios::in);
 	getline(fichier,fstline);
 	out={fstline[0]-'0',fstline[1]-'0'};
 	while(getline(fichier,s)){
 		voiture v={s[0]-'0',s[1]-'0',s[2]-'0',s[3]-'0'};
 		voitures.push_back(v);
 	}
-
-
 }
 
 
 void Parking::retournerligne(){
 	string fstline;
 	string s,s1;
-	ifstream fichier("/home/chaoui/Bureau/L3/Lifap6/RushHour/src/ff.txt");
+	ifstream fichier("../src/ff.txt");
 	if(fichier){cout<<"le fichier a été lu avec succes"<<endl;}
 	else{cout<<"ca a merder"<<endl;}
 	getline(fichier,fstline);
@@ -75,7 +73,7 @@ void Parking::deplacer(int numvehicule,deplace d){
 	}	
 	else if(voitures[numvehicule].position == 1){//horizentale
 		if(d == avant && 
-		grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne+voitures[numvehicule].longueur+1] == 0){
+		grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne+voitures[numvehicule].longueur] == 0){
 			grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne]=0;
 			voitures[numvehicule].colonne++;
 		}
@@ -125,7 +123,7 @@ bool Parking::peut_reculer(int numvehicule){
 void Parking::situation_de_jeu(){
 	for(unsigned int i=0;i<voitures.size()-1;i++){
 		int nb_avance=0;
-		int nb_recule=0;l
+		int nb_recule=0;
 		//cout<<"cest avant le premier while"<<endl;
 		while(peut_avancer(i)){
 			//cout<<"cest dans le premier while"<<endl;
