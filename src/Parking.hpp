@@ -4,6 +4,7 @@
 #include <vector>
 #include <fstream>
 #include <iostream>
+#include <queue>
 
 using namespace std;
 
@@ -32,7 +33,8 @@ class Parking {
 	public:
 	vector<voiture> voitures;
 	vector<situation> situations;
-	sortie out;	
+	queue<situation> s;
+	sortie out;
 	int grille[6][6] = {{0}};
 	Parking();
 	void Afficher();

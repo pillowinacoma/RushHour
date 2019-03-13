@@ -3,6 +3,7 @@
 #include <iostream>
 using namespace std;
 #include <stdlib.h>
+#include <string>
 
 Parking::Parking(){
 	string s;
@@ -40,10 +41,12 @@ void Parking::retournerligne(){
 
 
 void Parking::Afficher(){
+	unsigned int digiSize = voitures.size()/10;
+	string ss = std::to_string(digiSize);
 	for(unsigned int i = 0 ; i < voitures.size()-1 ; i++){
 		if(voitures[i].position == 0){//vertical
 			for(int j = 0 ; j < voitures[i].longueur ; j++){
-				grille[voitures[i].ligne+j][voitures[i].colonne] = i+1;
+					grille[voitures[i].ligne+j][voitures[i].colonne] = i+1;
 			}
 		}
 		else if(voitures[i].position == 1){//horizental
@@ -55,7 +58,7 @@ void Parking::Afficher(){
 
 	for(int i = 0 ; i < 6 ; i++){
 		for(int j = 0 ; j < 6 ; j++){
-			cout<<grille[i][j]<<' ';
+				cout<<"  "<<grille[i][j]<<string(digiSize - to_string(grille[i][j]).length()+1,' ');
 		}std::cout << endl;
 	}
 }
@@ -127,16 +130,16 @@ void Parking::situation_de_jeu(){
 		int nb_avance=0;
 		int nb_recule=0;
 		//cout<<"cest avant le premier while"<<endl;
-		while(peut_avancer(i)){
+		if(peut_avancer(i)){
 			//cout<<"cest dans le premier while"<<endl;
 			deplacer(i,avant);
 			nb_avance++;
 		}
-		while(peut_reculer(i)){
-			//cout<<"cest dans le deusieme while"<<endl;
-			deplacer(i,arriere);
-			nb_recule++;
-		}
+		// if(peut_reculer(i)){
+		// 	//cout<<"cest dans le deusieme while"<<endl;
+		// 	deplacer(i,arriere);
+		// 	nb_recule++;
+		// }
 		situation s = {voitures[i],nb_avance,nb_recule};
 		situations.push_back(s);
 	}
