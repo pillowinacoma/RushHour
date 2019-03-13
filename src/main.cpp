@@ -16,6 +16,7 @@ int main() {
 	p.situation_de_jeu();
 	//cout<<p.situations[0].v.ligne<<endl;
 	for(int unsigned i=0;i<p.situations.size();i++){
+		cout<<"c'est la "<<i<<"voiture"<<endl;	
 		cout<<p.situations[i].nb_avance<<p.situations[i].nb_recule<<endl;
 	}
 	return 0;

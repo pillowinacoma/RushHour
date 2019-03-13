@@ -125,7 +125,7 @@ bool Parking::peut_reculer(int numvehicule){
 void Parking::situation_de_jeu(){
 	for(unsigned int i=0;i<voitures.size()-1;i++){
 		int nb_avance=0;
-		int nb_recule=0;
+		int nb_recule=0;l
 		//cout<<"cest avant le premier while"<<endl;
 		while(peut_avancer(i)){
 			//cout<<"cest dans le premier while"<<endl;
