@@ -59,6 +59,7 @@ void Parking::Afficher(){
 				cout<<"  "<<grille[i][j]<<string(digiSize - to_string(grille[i][j]).length()+1,' ');
 		}std::cout << endl;
 	}
+	std::cout << endl;
 }
 
 void Parking::deplacer(int numvehicule,deplace d){
@@ -82,8 +83,8 @@ void Parking::deplacer(int numvehicule,deplace d){
 		}
 		if(d == arriere &&
 		grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne-1] == 0){
-			voitures[numvehicule].colonne--;
 			grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne+voitures[numvehicule].longueur]=0;
+			voitures[numvehicule].colonne--;
 		}
 	}
 }
@@ -91,13 +92,15 @@ void Parking::deplacer(int numvehicule,deplace d){
 bool Parking::peut_avancer(int numvehicule){
 	bool flag;
 	if(voitures[numvehicule].position == 0){//vertical
-		if(grille[voitures[numvehicule].ligne+voitures[numvehicule].longueur][voitures[numvehicule].colonne] == 0){
+		if(grille[voitures[numvehicule].ligne+voitures[numvehicule].longueur][voitures[numvehicule].colonne] == 0 && 				( voitures[numvehicule].ligne+voitures[numvehicule].longueur+1 <= 6 )
+			 ){
 			flag=true;
 		}
 		else flag=false;
 	}
 	if(voitures[numvehicule].position == 1){//horizentale
-		if(grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne+voitures[numvehicule].longueur+1] == 0){
+		if(grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne+voitures[numvehicule].longueur-1] == 0
+			&& voitures[numvehicule].colonne+voitures[numvehicule].longueur+1 <= 6){
 			flag=true;
 		}
 		else flag=false;
@@ -128,16 +131,16 @@ void Parking::situation_de_jeu(){
 		int nb_avance=0;
 		int nb_recule=0;
 		//cout<<"cest avant le premier while"<<endl;
-		if(peut_avancer(i)){
+		/*if(peut_avancer(i)){
 			//cout<<"cest dans le premier while"<<endl;
 			deplacer(i,avant);
 			nb_avance++;
-		}
-		// if(peut_reculer(i)){
-		// 	//cout<<"cest dans le deusieme while"<<endl;
-		// 	deplacer(i,arriere);
-		// 	nb_recule++;
-		// }
+		}*/
+		if(peut_reculer(i)){
+		 	//cout<<"cest dans le deusieme while"<<endl;
+		 	deplacer(i,arriere);
+		 	nb_recule++;
+		 }
 		situation s = {voitures[i],nb_avance,nb_recule};
 		situations.push_back(s);
 	}
