@@ -7,7 +7,7 @@ using namespace std;
 Parking::Parking(){
 	string s;
 	string fstline;
-	ifstream fichier("/home/chaoui/Bureau/L3/Lifap6/RushHour/Sujet/puzzle.txt",ios::in);
+	ifstream fichier("../Sujet/puzzle.txt",ios::in);
 	getline(fichier,fstline);
 	out={fstline[0]-'0',fstline[1]-'0'};
 	while(getline(fichier,s)){
@@ -22,7 +22,7 @@ Parking::Parking(){
 void Parking::retournerligne(){
 	string fstline;
 	string s,s1;
-	ifstream fichier("/home/chaoui/Bureau/L3/Lifap6/RushHour/src/ff.txt");
+	ifstream fichier("../src/ff.txt");
 	if(fichier){cout<<"le fichier a été lu avec succes"<<endl;}
 	else{cout<<"ca a merder"<<endl;}
 	getline(fichier,fstline);
@@ -62,38 +62,38 @@ void Parking::Afficher(){
 
 void Parking::deplacer(int numvehicule,deplace d){
 	if(voitures[numvehicule].position == 0){//vertical
-		if(d == avant && 
+		if(d == avant &&
 		grille[voitures[numvehicule].ligne+voitures[numvehicule].longueur][voitures[numvehicule].colonne] == 0){
 			grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne]=0;
 			voitures[numvehicule].ligne++;
 		}
-		if(d == arriere && 
+		if(d == arriere &&
 		grille[voitures[numvehicule].ligne-1][voitures[numvehicule].colonne] == 0){
-		grille[voitures[numvehicule].ligne+voitures[numvehicule].longueur-1][voitures[numvehicule].colonne]=0;			
+		grille[voitures[numvehicule].ligne+voitures[numvehicule].longueur-1][voitures[numvehicule].colonne]=0;
 			voitures[numvehicule].ligne--;
 		}
-	}	
+	}
 	else if(voitures[numvehicule].position == 1){//horizentale
-		if(d == avant && 
+		if(d == avant &&
 		grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne+voitures[numvehicule].longueur+1] == 0){
 			grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne]=0;
 			voitures[numvehicule].colonne++;
 		}
-		if(d == arriere && 
+		if(d == arriere &&
 		grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne-1] == 0){
-			voitures[numvehicule].colonne--;			
+			voitures[numvehicule].colonne--;
 			grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne+voitures[numvehicule].longueur]=0;
 		}
 	}
 }
 
 bool Parking::peut_avancer(int numvehicule){
-	bool flag;	
+	bool flag;
 	if(voitures[numvehicule].position == 0){//vertical
 		if(grille[voitures[numvehicule].ligne+voitures[numvehicule].longueur][voitures[numvehicule].colonne] == 0){
 			flag=true;
 		}
-		else flag=false; 
+		else flag=false;
 	}
 	if(voitures[numvehicule].position == 1){//horizentale
 		if(grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne+voitures[numvehicule].longueur+1] == 0){
@@ -125,7 +125,7 @@ bool Parking::peut_reculer(int numvehicule){
 void Parking::situation_de_jeu(){
 	for(unsigned int i=0;i<voitures.size()-1;i++){
 		int nb_avance=0;
-		int nb_recule=0;l
+		int nb_recule=0;
 		//cout<<"cest avant le premier while"<<endl;
 		while(peut_avancer(i)){
 			//cout<<"cest dans le premier while"<<endl;
