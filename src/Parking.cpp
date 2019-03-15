@@ -7,6 +7,7 @@ using namespace std;
 
 Parking::Parking(){
 	string s;
+	valeur=0;
 	string fstline;
 	ifstream fichier("../Sujet/puzzle.txt",ios::in);
 	getline(fichier,fstline);
@@ -126,18 +127,16 @@ bool Parking::peut_reculer(int numvehicule){
 void Parking::situation_de_jeu(){
 	for(unsigned int i=0;i<voitures.size()-1;i++){
 		if(peut_avancer(i)){
-			cout<<"la voiture "<<i<<" peut avancer "<<endl;
+			cout<<"la voiture "<<i<<" peut avancer "<<endl; 
 			situation s = {voitures[i],avant};
 			situations.push_back(s);
 		}
 		if(peut_reculer(i)){
-			cout<<"la voiture "<<i<<" peut reculer "<<endl;;
-		 	situation s = {voitures[i],arriere};
+			cout<<"la voiture "<<i<<" peut reculer "<<endl;
+			situation s = {voitures[i],arriere};
 			situations.push_back(s);
 		}
 	}
-	//cout<<"la longeur de la voiture 11"<<voitures[11].ligne+voitures[11].longueur<<endl;
-	//cout<<"la longueur de la voiture 11
 }
 
 

@@ -4,6 +4,7 @@ CXX      = g++
 
 SOURCES = 
 SOURCES += Parking.cpp
+SOURCES += Set_Parking.cpp
 
 OBJECTS = $(SOURCES:.cpp=.o)
 

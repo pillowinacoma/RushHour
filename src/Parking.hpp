@@ -21,7 +21,7 @@ struct sortie{
 	int x , y ;
 };
 
-enum deplace {avant,arriere};
+enum deplace {avant ,arriere};
 
 struct situation{
 	voiture v;
@@ -30,6 +30,7 @@ struct situation{
 
 class Parking {
 	public:
+	int valeur;
 	vector<voiture> voitures;
 	vector<situation> situations;
 	sortie out;
