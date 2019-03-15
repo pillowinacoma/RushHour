@@ -21,13 +21,12 @@ struct sortie{
 	int x , y ;
 };
 
+enum deplace {avant,arriere};
+
 struct situation{
 	voiture v;
-	int nb_avance;
-	int nb_recule;
+	deplace d;
 };
-
-enum deplace {avant,arriere};
 
 class Parking {
 	public:

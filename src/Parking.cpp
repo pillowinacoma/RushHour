@@ -92,15 +92,14 @@ void Parking::deplacer(int numvehicule,deplace d){
 bool Parking::peut_avancer(int numvehicule){
 	bool flag;
 	if(voitures[numvehicule].position == 0){//vertical
-		if(grille[voitures[numvehicule].ligne+voitures[numvehicule].longueur][voitures[numvehicule].colonne] == 0 && 				( voitures[numvehicule].ligne+voitures[numvehicule].longueur+1 <= 6 )
-			 ){
+		if(grille[voitures[numvehicule].ligne+voitures[numvehicule].longueur][voitures[numvehicule].colonne] == 0 && 				( voitures[numvehicule].ligne+voitures[numvehicule].longueur <= 6 ) ){
 			flag=true;
 		}
 		else flag=false;
 	}
 	if(voitures[numvehicule].position == 1){//horizentale
-		if(grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne+voitures[numvehicule].longueur-1] == 0
-			&& voitures[numvehicule].colonne+voitures[numvehicule].longueur+1 <= 6){
+		if(grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne+voitures[numvehicule].longueur] == 0
+			&& (voitures[numvehicule].colonne+voitures[numvehicule].longueur <= 6 )){
 			flag=true;
 		}
 		else flag=false;
@@ -111,13 +110,15 @@ bool Parking::peut_avancer(int numvehicule){
 bool Parking::peut_reculer(int numvehicule){
 	bool flag;
 	if(voitures[numvehicule].position == 0){//vertical
-		if(grille[voitures[numvehicule].ligne-1][voitures[numvehicule].colonne] == 0){
+		if(grille[voitures[numvehicule].ligne-1][voitures[numvehicule].colonne] == 0 &&
+			( voitures[numvehicule].ligne -1 >= 0  )){
 			flag=true;
 		}
 		else flag=false;
 	}
 	if(voitures[numvehicule].position == 1){//horizentale
-		if(grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne-1] == 0){
+		if(grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne-1] == 0 &&
+			( voitures[numvehicule].colonne -1 >= 0  )){
 			flag=true;
 		}
 		else flag=false;
@@ -128,22 +129,19 @@ bool Parking::peut_reculer(int numvehicule){
 
 void Parking::situation_de_jeu(){
 	for(unsigned int i=0;i<voitures.size()-1;i++){
-		int nb_avance=0;
-		int nb_recule=0;
-		//cout<<"cest avant le premier while"<<endl;
-		/*if(peut_avancer(i)){
-			//cout<<"cest dans le premier while"<<endl;
-			deplacer(i,avant);
-			nb_avance++;
-		}*/
+		if(peut_avancer(i)){
+			cout<<"la voiture "<<i<<" peut avancer "<<endl;
+			situation s = {voitures[i],avant};
+			situations.push_back(s);
+		}
 		if(peut_reculer(i)){
-		 	//cout<<"cest dans le deusieme while"<<endl;
-		 	deplacer(i,arriere);
-		 	nb_recule++;
-		 }
-		situation s = {voitures[i],nb_avance,nb_recule};
-		situations.push_back(s);
+			cout<<"la voiture "<<i<<" peut reculer "<<endl;;
+		 	situation s = {voitures[i],arriere};
+			situations.push_back(s);
+		}
 	}
+	//cout<<"la longeur de la voiture 11"<<voitures[11].ligne+voitures[11].longueur<<endl;
+	//cout<<"la longueur de la voiture 11
 }
 
 
