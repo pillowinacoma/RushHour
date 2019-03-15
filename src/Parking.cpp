@@ -64,25 +64,21 @@ void Parking::Afficher(){
 
 void Parking::deplacer(int numvehicule,deplace d){
 	if(voitures[numvehicule].position == 0){//vertical
-		if(d == avant &&
-		grille[voitures[numvehicule].ligne+voitures[numvehicule].longueur][voitures[numvehicule].colonne] == 0){
+		if(d == avant && peut_avancer(numvehicule)){
 			grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne]=0;
 			voitures[numvehicule].ligne++;
 		}
-		if(d == arriere &&
-		grille[voitures[numvehicule].ligne-1][voitures[numvehicule].colonne] == 0){
+		if(d == arriere && peut_reculer(numvehicule)){
 		grille[voitures[numvehicule].ligne+voitures[numvehicule].longueur-1][voitures[numvehicule].colonne]=0;
 			voitures[numvehicule].ligne--;
 		}
 	}
 	else if(voitures[numvehicule].position == 1){//horizentale
-		if(d == avant && 
-		grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne+voitures[numvehicule].longueur] == 0){
+		if(d == avant && peut_avancer(numvehicule)){
 			grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne]=0;
 			voitures[numvehicule].colonne++;
 		}
-		if(d == arriere &&
-		grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne-1] == 0){
+		if(d == arriere && peut_reculer(numvehicule)){
 			grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne+voitures[numvehicule].longueur]=0;
 			voitures[numvehicule].colonne--;
 		}
@@ -92,14 +88,14 @@ void Parking::deplacer(int numvehicule,deplace d){
 bool Parking::peut_avancer(int numvehicule){
 	bool flag;
 	if(voitures[numvehicule].position == 0){//vertical
-		if(grille[voitures[numvehicule].ligne+voitures[numvehicule].longueur][voitures[numvehicule].colonne] == 0 && 				( voitures[numvehicule].ligne+voitures[numvehicule].longueur <= 6 ) ){
+		if(grille[voitures[numvehicule].ligne+voitures[numvehicule].longueur][voitures[numvehicule].colonne] == 0 && 				( voitures[numvehicule].ligne+voitures[numvehicule].longueur+1 <= 6 ) ){
 			flag=true;
 		}
 		else flag=false;
 	}
 	if(voitures[numvehicule].position == 1){//horizentale
 		if(grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne+voitures[numvehicule].longueur] == 0
-			&& (voitures[numvehicule].colonne+voitures[numvehicule].longueur <= 6 )){
+			&& (voitures[numvehicule].colonne+voitures[numvehicule].longueur+1 <= 6 )){
 			flag=true;
 		}
 		else flag=false;

@@ -13,8 +13,5 @@ int main() {
 	for(unsigned int i = 0 ;i<p.situations.size();i++){
 		cout<<"ligne : "<<p.situations[i].v.ligne<<" colonne : "<<p.situations[i].v.colonne<<" direction : "<<p.situations[i].d<<endl;
 	}
-	
-	p.deplacer(9,arriere);
-	p.Afficher();
 	return 0;
 }
