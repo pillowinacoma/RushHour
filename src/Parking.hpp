@@ -33,6 +33,7 @@ class Parking {
 	int valeur;
 	vector<voiture> voitures;
 	vector<situation> situations;
+	vector<int> positions;
 	sortie out;
 	int grille[6][6] = {{0}};
 	Parking();

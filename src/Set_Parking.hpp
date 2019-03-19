@@ -3,15 +3,15 @@
 
 #include <iostream>
 #include <set>
-#include <queu>
+#include <queue>
 #include "Parking.hpp"
 
 
-class SetParking {
+class SetParking{
 	public:
 	SetParking();
-		
-}
+	set<Parking> noeud;
+};
 
 
-
+#endif

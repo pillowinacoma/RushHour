@@ -130,11 +130,13 @@ void Parking::situation_de_jeu(){
 			cout<<"la voiture "<<i<<" peut avancer "<<endl; 
 			situation s = {voitures[i],avant};
 			situations.push_back(s);
+			positions.push_back(i);
 		}
 		if(peut_reculer(i)){
 			cout<<"la voiture "<<i<<" peut reculer "<<endl;
 			situation s = {voitures[i],arriere};
 			situations.push_back(s);
+			positions.push_back(i);
 		}
 	}
 }
