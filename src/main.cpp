@@ -14,10 +14,11 @@ int main() {
 		cout<<"ligne : "<<p.situations[i].v.ligne<<" colonne : "<<p.situations[i].v.colonne<<" direction : "<<p.situations[i].d<<endl;
 		cout<<"la voiture "<<p.positions[i]<<" peut se deplacer "<<endl;
 	}*/
-	set<int>::iterator it1;
+	set<Parking>::iterator it1;
 	SetParking s;
-	for (it1 = s.noeud.begin(); it1!=s.noeud.end();  ++it1){
-		it1.Afficher();
-	}
+	/*for (it1 = s.noeud.begin(); it1!=s.noeud.end();  ++it1){
+		*it1.p;
+	}*/
+	*s.noeud.begin().Afficher();
 	return 0;
 }
