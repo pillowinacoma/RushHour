@@ -10,7 +10,10 @@
 class SetParking{
 	public:
 	SetParking();
+	queue<Parking> Q;
 	set<Parking> noeud;
+	void CrerFils(Parking& p);
+	void RemplirSet();
 };
 
 

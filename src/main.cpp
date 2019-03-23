@@ -17,8 +17,7 @@ int main() {
 	set<Parking>::iterator it1;
 	SetParking s;
 	for (it1 = s.noeud.begin(); it1!=s.noeud.end();  ++it1){
-		cout<<it1->voitures[0].ligne<<endl;
-		
+		cout<<it1->voitures[2].ligne<<it1->voitures[2].colonne<<endl;
 	}
 	//*s.noeud.begin().Afficher();
 	return 0;

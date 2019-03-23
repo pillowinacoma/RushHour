@@ -148,12 +148,4 @@ void Parking::deplacement(int numvehicule,deplace d){
 	Afficher();
 }
 
-/*bool static EstPlusPtitQue(Parking const& a,Parking const& b){
-	return ( (a.voitures[0].ligne <= b.voitures[0].ligne) && (a.voitures[0].colonne <= b.voitures[0].colonne) ) ;
-}
-
-bool Parking::operator< (Parking const& a,Parking const& b){
-	return EstPlusPtitQue(a,b);
-}*/
-
 Parking::~Parking(){}
