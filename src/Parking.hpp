@@ -44,7 +44,13 @@ class Parking {
 	bool peut_reculer(int numvehicule);
 	void situation_de_jeu();
 	void retournerligne();
+	friend bool operator< (const Parking& a,const Parking& b){
+	return ( (a.voitures[0].ligne <= b.voitures[0].ligne) && (a.voitures[0].colonne <= b.voitures[0].colonne) ) ;
+	}
+	//bool EstPlusPtitQue(Parking const& b);
 	~Parking();
 };
+
+//bool operator< (Parking const& a,Parking const& b);
 
 #endif
