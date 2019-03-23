@@ -9,11 +9,14 @@
 
 class SetParking{
 	public:
+	Parking p;
 	SetParking();
+	SetParking(Parking p1);
 	queue<Parking> Q;
 	set<Parking> noeud;
 	void CrerFils(Parking& p);
 	void RemplirSet();
+	void afficherSet();
 };
 
 

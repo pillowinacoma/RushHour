@@ -1,14 +1,14 @@
 #include "Set_Parking.hpp"
 
 SetParking::SetParking(){
-	Parking p;
-	noeud.insert(p);
-	p.Afficher();
-	//CrerFils(p);
+	p=Parking();
+}
+
+SetParking::SetParking(Parking p1): p(p1){
 }
 
 void SetParking::CrerFils(Parking& p){	
-	if(p.voitures[0].colonne+p.voitures[0].longueur-1 != p.out.y){	
+	if(p.voitures[0].colonne+p.voitures[0].longueur-1 != p.out.y){
 		p.situation_de_jeu();
 		for(unsigned int i = 0;i<p.situations.size();i++){
 			Parking p1;
@@ -36,4 +36,6 @@ void SetParking::RemplirSet(){
 	CrerFils(p);
 }
 
-//static void 
+void SetParking::afficherSet(){
+}
+
