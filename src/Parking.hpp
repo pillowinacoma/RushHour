@@ -8,6 +8,9 @@
 
 using namespace std;
 
+const int int_x=6;
+const int int_y=6;
+
 struct voiture{
 	int  ligne;
 	int colonne;
@@ -15,10 +18,13 @@ struct voiture{
 	int position ;
 	voiture(int l,int c,int lg,int p):ligne(l),colonne(c),longueur(lg),position(p){}
 	bool operator < (const voiture& b)const{
-		return ( (this->ligne < b.ligne) && (this->colonne < b.colonne) ); 
+		return ( (this->ligne+int_y*this->colonne) < (b.ligne+int_y*b.colonne) );
 	}
 	bool operator > (const voiture& b)const{
-		return ( (this->ligne > b.ligne) && (this->colonne > b.colonne)); 
+		return ( (this->ligne+int_y*this->colonne) > (b.ligne+int_y*b.colonne) ); 
+	}
+	bool operator == (const voiture& b)const{
+		return ( (this->ligne+int_y*this->colonne) == (b.ligne+int_y*b.colonne) );
 	}
 };
 
@@ -52,7 +58,7 @@ class Parking {
 	void retournerligne();
 	bool operator < (const Parking& b) const{
 		for(unsigned int i=0;i<this->voitures.size();i++){
-			if(this->voitures[i]<b.voitures[i]){
+			if(this->voitures[i]>b.voitures[i]){
 				return false;
 			}			
 			if(this->voitures[i]<b.voitures[i]) {
@@ -61,6 +67,17 @@ class Parking {
 		} 
 		return false;	
 	}
+	/*bool operator == (const Parking& b) const{
+		for(unsigned int i=0;i<this->voitures.size();i++){
+			if(this->voitures[i]b.voitures[i]){
+				return false;
+			}			
+			if(this->voitures[i]<b.voitures[i]) {
+				return true;
+			}
+		} 
+		return false;	
+	}*/
 	~Parking();
 };
 
