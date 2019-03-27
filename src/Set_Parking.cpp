@@ -12,7 +12,7 @@ void SetParking::CrerFils(Parking p){
 	Q.push(p);
 	cout<<"la taille de la file "<<Q.size()<<endl;
 	int res=0;
-	while( (!Q.empty()) &&(Q.front().voitures[0].colonne+p.voitures[0].longueur-1 == p.out.y)==false && (res<200) ){
+	while( (!Q.empty()) && (Q.front().voitures[0].colonne+p.voitures[0].longueur-1 == p.out.y)==false){
 		res+=1;
 		//cout<<" verifier la valeur du premier test "<<
 		//(Q.front().voitures[0].colonne+p.voitures[0].longueur-1 == p.out.y)<<endl;
