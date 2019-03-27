@@ -1,9 +1,10 @@
 #include "Parking.hpp"
 
 #include <iostream>
-using namespace std;
 #include <stdlib.h>
 #include <string>
+
+using namespace std;
 
 Parking::Parking(){
 	string s;

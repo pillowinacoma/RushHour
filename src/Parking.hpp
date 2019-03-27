@@ -14,6 +14,12 @@ struct voiture{
 	int longueur;
 	int position ;
 	voiture(int l,int c,int lg,int p):ligne(l),colonne(c),longueur(lg),position(p){}
+	bool operator < (const voiture& b)const{
+		return ( (this->ligne < b.ligne) && (this->colonne < b.colonne) ); 
+	}
+	bool operator > (const voiture& b)const{
+		return ( (this->ligne > b.ligne) && (this->colonne > b.colonne)); 
+	}
 };
 
 
@@ -44,13 +50,18 @@ class Parking {
 	bool peut_reculer(int numvehicule);
 	void situation_de_jeu();
 	void retournerligne();
-	friend bool operator< (const Parking& a,const Parking& b){
-	return ( (a.voitures[0].ligne <= b.voitures[0].ligne) && (a.voitures[0].colonne <= b.voitures[0].colonne) ) ;
+	bool operator < (const Parking& b) const{
+		for(unsigned int i=0;i<this->voitures.size();i++){
+			if(this->voitures[i]<b.voitures[i]){
+				return false;
+			}			
+			if(this->voitures[i]<b.voitures[i]) {
+				return true;
+			}
+		} 
+		return false;	
 	}
-	//bool EstPlusPtitQue(Parking const& b);
 	~Parking();
 };
-
-//bool operator< (Parking const& a,Parking const& b);
 
 #endif

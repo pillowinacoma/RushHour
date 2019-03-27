@@ -8,8 +8,8 @@ SOURCES += Set_Parking.cpp
 
 OBJECTS = $(SOURCES:.cpp=.o)
 
-CXXFLAGS  += -g -Wall -std=c++11 -pedantic
-LDFLAGS +=
+CXXFLAGS  += -g  -Wall -std=c++11 -pedantic
+LDFLAGS +=-ggdb
 
 $(OBJECTS) : %.o : %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
