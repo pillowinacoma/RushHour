@@ -24,8 +24,9 @@ void SetParking::CrerFils(Parking p){
 		q.situation_de_jeu();
 		for(unsigned int i = 0;i<q.situations.size();i++){
 			cout<<"c'est rentrer dans la boucle for "<<endl;
-			Parking p1;
+			Parking p1=q;
 			//cout<<"creation de mon parking "<<endl;
+			p1.Afficher();
 			p1.deplacer(q.positions[i],q.situations[i].d);
 			//if(<)
 			//cout<<"j'applique les deplacement sur le noueau parking crée "<<endl;
@@ -37,8 +38,9 @@ void SetParking::CrerFils(Parking p){
 				Q.push(p1);
 			}
 			//cout<<"j'ai résussi a push dans ma queue "<<endl;
-		}
-		cout<<"c'est sortie de ma for "<<endl;
+	}
+	cout<<"c'est sortie de ma for "<<endl;
+	cout<<" le res est de "<<res<<endl;	
 	}
 	/*if(p.voitures[0].colonne+p.voitures[0].longueur-1 != p.out.y){
 		p.situation_de_jeu();
