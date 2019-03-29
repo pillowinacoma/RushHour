@@ -19,26 +19,12 @@ Parking::Parking(){
 	}
 }
 
-
-void Parking::retournerligne(){
-	string fstline;
-	string s,s1;
-	ifstream fichier("../src/ff.txt");
-	if(fichier){cout<<"le fichier a été lu avec succes"<<endl;}
-	else{cout<<"ca a merder"<<endl;}
-	getline(fichier,fstline);
-	getline(fichier,s);
-	getline(fichier,s1);
-	voiture v(fstline[0],fstline[1],fstline[2],fstline[3]);
-	v.ligne=fstline[0];
-	v.colonne=fstline[1];
-	v.longueur=fstline[2];
-	v.position=fstline[3];
-	cout<<fstline[0]<<fstline[1]<<fstline[2]<<fstline[3];
-	cout<<" "<<v.ligne<<" "<<v.colonne<<" "<<v.longueur<<" "<<v.position<<endl;
-	voitures.push_back(v);
+bool Parking::gagner(){
+	if(voitures[0].colonne+voitures[0].longueur-1 == out.y){
+		return true;
+	}
+	return false;
 }
-
 
 void Parking::Afficher(){
 	unsigned int digiSize = voitures.size()/10;

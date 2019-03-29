@@ -55,7 +55,7 @@ class Parking {
 	bool peut_avancer(int numvehicule);
 	bool peut_reculer(int numvehicule);
 	void situation_de_jeu();
-	void retournerligne();
+	bool gagner();
 	bool operator < (const Parking& b) const{
 		for(unsigned int i=0;i<this->voitures.size();i++){
 			if(this->voitures[i]>b.voitures[i]){
@@ -67,17 +67,6 @@ class Parking {
 		} 
 		return false;	
 	}
-	/*bool operator == (const Parking& b) const{
-		for(unsigned int i=0;i<this->voitures.size();i++){
-			if(this->voitures[i]b.voitures[i]){
-				return false;
-			}			
-			if(this->voitures[i]<b.voitures[i]) {
-				return true;
-			}
-		} 
-		return false;	
-	}*/
 	~Parking();
 };
 
