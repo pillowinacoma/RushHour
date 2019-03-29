@@ -17,18 +17,6 @@ Parking::Parking(){
 		voiture v={s[0]-'0',s[1]-'0',s[2]-'0',s[3]-'0'};
 		voitures.push_back(v);
 	}
-}
-
-bool Parking::gagner(){
-	if(voitures[0].colonne+voitures[0].longueur-1 == out.y){
-		return true;
-	}
-	return false;
-}
-
-void Parking::Afficher(){
-	unsigned int digiSize = voitures.size()/10;
-	string ss = std::to_string(digiSize);
 	for(unsigned int i = 0 ; i < voitures.size()-1 ; i++){
 		if(voitures[i].position == 0){//vertical
 			for(int j = 0 ; j < voitures[i].longueur ; j++){
@@ -41,7 +29,33 @@ void Parking::Afficher(){
 			}
 		}
 	}
+}
 
+bool Parking::gagner(){
+	if(voitures[0].colonne+voitures[0].longueur-1 == out.y){
+		return true;
+	}
+	return false;
+}
+
+void Parking::met_a_jour_la_grille(){
+	for(unsigned int i = 0 ; i < voitures.size()-1 ; i++){
+		if(voitures[i].position == 0){//vertical
+			for(int j = 0 ; j < voitures[i].longueur ; j++){
+					grille[voitures[i].ligne+j][voitures[i].colonne] = i+1;
+			}
+		}
+		else if(voitures[i].position == 1){//horizental
+			for(int j = 0 ; j < voitures[i].longueur ; j++){
+				grille[voitures[i].ligne][voitures[i].colonne+j] = i+1;
+			}
+		}
+	}
+}
+
+void Parking::Afficher(){
+	met_a_jour_la_grille();
+	unsigned int digiSize = voitures.size()/10;
 	for(int i = 0 ; i < 6 ; i++){
 		for(int j = 0 ; j < 6 ; j++){
 				cout<<"  "<<grille[i][j]<<string(digiSize - to_string(grille[i][j]).length()+1,' ');
@@ -126,6 +140,7 @@ void Parking::situation_de_jeu(){
 			positions.push_back(i);
 		}
 	}
+	cout<<endl;
 }
 
 

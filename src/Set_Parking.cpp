@@ -25,6 +25,7 @@ void SetParking::CrerFils(Parking p){
 			//cout<<"creation de mon parking "<<endl;
 			p1.Afficher();
 			p1.deplacer(q.positions[i],q.situations[i].d);
+			p1.Afficher();
 			//if(<)
 			//cout<<"j'applique les deplacement sur le noueau parking crée "<<endl;
 			//noeud.insert(p1));			

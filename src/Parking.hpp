@@ -55,6 +55,7 @@ class Parking {
 	bool peut_avancer(int numvehicule);
 	bool peut_reculer(int numvehicule);
 	void situation_de_jeu();
+	void met_a_jour_la_grille();
 	bool gagner();
 	bool operator < (const Parking& b) const{
 		for(unsigned int i=0;i<this->voitures.size();i++){
