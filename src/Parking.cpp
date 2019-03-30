@@ -81,7 +81,7 @@ void Parking::deplacer(int numvehicule,deplace d){
 			voitures[numvehicule].colonne++;
 		}
 		if(d == arriere && peut_reculer(numvehicule)){
-			grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne+voitures[numvehicule].longueur]=0;
+			grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne+voitures[numvehicule].longueur-1]=0;
 			voitures[numvehicule].colonne--;
 		}
 	}
