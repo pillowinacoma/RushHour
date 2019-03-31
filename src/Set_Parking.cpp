@@ -40,6 +40,7 @@ void SetParking::CrerFils(Parking p){
 			//cout<<"j'insere mon parking dans la set et je retourne un iterateur"<<endl;
 			if(ret.second==true){ 
 				cout<<"ca push "<<endl<<endl;
+				p1.valeur++;
 				Q.push(p1);
 			}else{cout<<"ca ne la pas push dans ma queue "<<endl;}
 			//cout<<"j'ai résussi a push dans ma queue "<<endl;
@@ -47,5 +48,8 @@ void SetParking::CrerFils(Parking p){
 		res+=1;
 		//cout<<"c'est sortie de ma for "<<endl;
 		cout<<" le res est de "<<res<<endl;	
+	}
+	if(Q.front().gagner() == true){
+		cout<<endl<<"la nombre de saut effectuer est de : "<<Q.front().valeur<<endl;
 	}
 }
