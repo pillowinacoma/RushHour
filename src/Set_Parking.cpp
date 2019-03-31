@@ -27,7 +27,8 @@ void SetParking::CrerFils(Parking p){
 			cout<<"				------- creation d'un fils-------		"<<endl<<endl;	
 			//cout<<"c'est rentrer dans la boucle for "<<endl;
 			Parking p1=q;
-			//cout<<"creation de mon parking "<<endl;
+			p1.positions.clear();
+			p1.situations.clear();
 			p1.Afficher();
 				
 			cout<<endl<<" le deplacement effectuer pos : "<<q.positions[i]<<" la direction  "<<q.situations[i].d<<endl;
