@@ -1,5 +1,4 @@
 #include "Parking.hpp"
-
 #include <iostream>
 #include <stdlib.h>
 #include <string>
@@ -124,7 +123,6 @@ bool Parking::peut_reculer(int numvehicule){
 	return flag;
 }
 
-
 void Parking::situation_de_jeu(){
 	for(unsigned int i=0;i<voitures.size()-1;i++){
 		if(peut_avancer(i)){
@@ -142,7 +140,6 @@ void Parking::situation_de_jeu(){
 	}
 	cout<<endl;
 }
-
 
 void Parking::deplacement(int numvehicule,deplace d){
 	Afficher();
