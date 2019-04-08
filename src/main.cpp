@@ -6,16 +6,20 @@ using namespace std;
 
 int main() {
 	Parking p ;
-	p.Afficher();
-	for(unsigned int i = 0;i<p.voitures.size();i++){
+	for(unsigned int i = 0;i<p.voitures.size()-1;i++){
 		p.moving_forward(i);
 	}
 	for(unsigned int j = 0;j < p.moves.size() ; j++){
 		cout<<"le vehicule numero : "<<p.positions[j]<<" peut : "<<p.moves[j].d<<" de "<<p.moves[j].nbr<<" coup "<<endl;
 	}
+	p.Afficher();
 	//p.movements();
 	/*p.situation_de_jeu();
-	Parking r;
+	p.deplacer(p.positions[0],p.situations[0].d);
+	p.Afficher();
+	p.reset_table();
+	p.Afficher();*/	
+	/*Parking r;
 	r.Afficher();
 	cout<<" "<<endl<<"avant l'apllication des changement "<<endl<<endl;
 	r.deplacer(p.positions[0],p.situations[0].d);

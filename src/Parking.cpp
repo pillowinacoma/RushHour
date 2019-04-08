@@ -30,6 +30,26 @@ Parking::Parking(){
 	}
 }
 
+void Parking::reset_table(){
+	voitures.clear();
+	string fstline;
+	string s;
+	ifstream fichier("../Sujet/puzzle.txt",ios::in);
+	getline(fichier,fstline);
+	out={fstline[0]-'0',fstline[1]-'0'};
+	while(getline(fichier,s)){
+		voiture v={s[0]-'0',s[1]-'0',s[2]-'0',s[3]-'0'};
+		voitures.push_back(v);
+	}
+	for(int i = 0 ; i<6;i++){
+		for(int j = 0 ;j<6;j++){
+			grille[i][j]=0;
+		}
+	}
+	met_a_jour_la_grille();
+}
+
+	
 bool Parking::gagner(){
 	if(voitures[0].colonne+voitures[0].longueur-1 == out.y){
 		return true;
@@ -167,14 +187,24 @@ void Parking::movements(){
 }
 
 void Parking::moving_forward(int numvehicule){
-	int tmp = 0;	
+	int advance = 0;
+	int retreat = 0;	
 	while(peut_avancer(numvehicule)){
-		tmp++;
-		mouvements m = {tmp,voitures[numvehicule],avant};
+		advance++;
+		mouvements m = {advance,voitures[numvehicule],avant};
 		moves.push_back(m);
 		positions.push_back(numvehicule);
 		deplacer(numvehicule,avant);
 	}
+	reset_table();
+	while(peut_reculer(numvehicule)){
+		retreat++;
+		mouvements m = {retreat,voitures[numvehicule],arriere};
+		moves.push_back(m);
+		positions.push_back(numvehicule);
+		deplacer(numvehicule,arriere);
+	}
+	reset_table();
 }
 
 void Parking::deplacement(int numvehicule,deplace d){

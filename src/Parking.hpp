@@ -65,6 +65,7 @@ class Parking {
 	void met_a_jour_la_grille();
 	bool gagner();
 	void movements();
+	void reset_table();
 	void moving_forward(int numvehicule);
 	bool operator < (const Parking& b) const{
 		for(unsigned int i=0;i<this->voitures.size();i++){
