@@ -7,6 +7,13 @@ using namespace std;
 int main() {
 	Parking p ;
 	p.Afficher();
+	for(unsigned int i = 0;i<p.voitures.size();i++){
+		p.moving_forward(i);
+	}
+	for(unsigned int j = 0;j < p.moves.size() ; j++){
+		cout<<"le vehicule numero : "<<p.positions[j]<<" peut : "<<p.moves[j].d<<" de "<<p.moves[j].nbr<<" coup "<<endl;
+	}
+	//p.movements();
 	/*p.situation_de_jeu();
 	Parking r;
 	r.Afficher();
@@ -36,11 +43,11 @@ int main() {
 	cout<<endl<<"le tableau apres afectation de r "<<endl<<endl;
 	m.Afficher();
 	m.situation_de_jeu();*/
-	SetParking s=SetParking();
+	//SetParking s=SetParking();
 	//cout<<s.noeud.size()<<endl;
-	s.CrerFils(p);
+	//s.CrerFils(p);
 	cout<<"c'est fini "<<endl;
-	cout<<"la taille de la set "<<s.noeud.size()<<endl;
-	cout<<"la taille de la file "<<s.Q.size()<<endl;
+	//cout<<"la taille de la set "<<s.noeud.size()<<endl;
+	//cout<<"la taille de la file "<<s.Q.size()<<endl;
 	return 0;
 }

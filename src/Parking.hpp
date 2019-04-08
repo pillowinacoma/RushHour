@@ -40,12 +40,19 @@ struct situation{
 	deplace d;
 };
 
+struct mouvements{	
+	int nbr;
+	voiture v;
+	deplace d;
+};
+
 class Parking {
 	public:
 	int valeur;
 	vector<voiture> voitures;
 	vector<situation> situations;
 	vector<int> positions;
+	vector<mouvements> moves;
 	sortie out;
 	int grille[6][6] = {{0}};
 	Parking();
@@ -57,6 +64,8 @@ class Parking {
 	void situation_de_jeu();
 	void met_a_jour_la_grille();
 	bool gagner();
+	void movements();
+	void moving_forward(int numvehicule);
 	bool operator < (const Parking& b) const{
 		for(unsigned int i=0;i<this->voitures.size();i++){
 			if(this->voitures[i]>b.voitures[i]){

@@ -47,7 +47,6 @@ void SetParking::CrerFils(Parking p){
 			//cout<<"j'ai résussi a push dans ma queue "<<endl;
 		}
 		res+=1;
-		//cout<<"c'est sortie de ma for "<<endl;
 		cout<<" le res est de "<<res<<endl;	
 	}
 	if(Q.front().gagner() == true){

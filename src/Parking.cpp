@@ -141,6 +141,42 @@ void Parking::situation_de_jeu(){
 	cout<<endl;
 }
 
+void Parking::movements(){
+	for(unsigned int i=0;i<voitures.size()-1;i++){
+		int tmp=0;
+		while(peut_avancer(i)){
+			tmp++;
+			cout<<"la voiture "<<i<<" peut avancer "<<tmp<<" fois ."<<endl; 
+			situation s = {voitures[i],avant};
+			mouvements m = { tmp,voitures[i],avant };
+			situations.push_back(s);
+			positions.push_back(i);
+			moves.push_back(m);
+		}
+		while(peut_reculer(i)){
+			tmp++;
+			cout<<"la voiture "<<i<<" peut reculer "<<tmp<<" fois ."<<endl;
+			situation s = {voitures[i],arriere};
+			mouvements m = {tmp,voitures[i],arriere};
+			situations.push_back(s);
+			positions.push_back(i);
+			moves.push_back(m);
+		}
+	}
+	cout<<endl;
+}
+
+void Parking::moving_forward(int numvehicule){
+	int tmp = 0;	
+	while(peut_avancer(numvehicule)){
+		tmp++;
+		mouvements m = {tmp,voitures[numvehicule],avant};
+		moves.push_back(m);
+		positions.push_back(numvehicule);
+		deplacer(numvehicule,avant);
+	}
+}
+
 void Parking::deplacement(int numvehicule,deplace d){
 	Afficher();
 	deplacer(numvehicule,d);
