@@ -198,5 +198,11 @@ void Parking::displacement(){
 	}
 }
 
-Parking::~Parking(){}
+void Parking::chemin_effectuer(){
+	cout<<" les mouvements effectuer pour arriver au dernier parking : "<<endl;
+	for(unsigned int k = 0 ; k < tab_deplacments.size() ; k++){
+		cout<<" la voiture : "<<tab_deplacments[k].indice<<" se deplace "<<tab_deplacments[k].nbr<<" vers la direction : "<<tab_deplacments[k].d<<endl;
+	}
+}
 
+Parking::~Parking(){}

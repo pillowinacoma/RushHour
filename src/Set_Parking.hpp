@@ -19,6 +19,7 @@ class SetParking{
 	//la structure qui contient tout les parking
 	set<Parking> noeud;
 
+	//fct qui resou le rush_hour en 14 coups et renvoie le Parking gagnant 
 	Parking CrerFils(Parking p);
 	
 };

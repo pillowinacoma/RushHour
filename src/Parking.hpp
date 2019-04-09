@@ -59,7 +59,7 @@ struct mouvements{
 	deplace d;
 };
 
-struct mm{
+struct deplacement_effectuer{
 	int indice;
 	int nbr;
 	deplace d;
@@ -82,7 +82,7 @@ class Parking {
 	vector<mouvements> moves;
 
 	//table de coup deja subit
-	vector<mm> m;
+	vector<deplacement_effectuer> tab_deplacments;
 
 	//le point de sortie
 	sortie out;
@@ -122,6 +122,9 @@ class Parking {
 	//trouve tout les deplacement 
 	void displacement();	
 	
+	//chemin effetuer pour arriver 
+	void chemin_effectuer();
+
 	//operateur pour comparer entre les parking
 	bool operator < (const Parking& b) const{
 		for(unsigned int i=0;i<this->voitures.size();i++){
