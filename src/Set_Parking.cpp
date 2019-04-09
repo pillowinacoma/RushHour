@@ -4,7 +4,7 @@ SetParking::SetParking(){
 	p=Parking();
 }
 
-void SetParking::CrerFils(Parking p){
+/*void SetParking::CrerFils(Parking p){
 	noeud.insert(p);
 	Q.push(p);
 	int res=0;
@@ -37,6 +37,59 @@ void SetParking::CrerFils(Parking p){
 			//if(<)
 			//cout<<"j'applique les deplacement sur le noueau parking crée "<<endl;
 			//noeud.insert(p1));			
+			auto ret=noeud.insert(p1);
+			//cout<<"j'insere mon parking dans la set et je retourne un iterateur"<<endl;
+			if(ret.second==true){ 
+				cout<<"ca push "<<endl<<endl;
+				p1.valeur++;
+				Q.push(p1);
+			}else{cout<<"ca ne la pas push dans ma queue "<<endl;}
+			//cout<<"j'ai résussi a push dans ma queue "<<endl;
+		}
+		res+=1;
+		cout<<" le res est de "<<res<<endl;	
+	}
+	if(Q.front().gagner() == true){
+		cout<<endl<<"la nombre de saut effectuer est de : "<<Q.front().valeur<<endl;
+		cout<<endl;		
+		Q.front().Afficher();
+		cout<<endl;
+	}
+}*/
+
+void SetParking::CrerFils(Parking p){
+	noeud.insert(p);
+	Q.push(p);
+	int res=0;
+	while( (!Q.empty()) && ( Q.front().gagner() == false)  ){
+		cout<<"------------------------------- nouveau neud de tete de liste ------------------------------"<<endl<<endl;		
+		cout<<" verifier la valeur du premier test "<<
+		(Q.front().voitures[0].colonne+p.voitures[0].longueur-1 == p.out.y && res<2)<<endl;
+		Parking q = Q.front();
+		cout<<"je recupere mon parking "<<endl<<endl;	
+		Q.pop();
+		q.Afficher();
+		cout<<" les differentes situations de jeu que j'ai "<<endl<<endl;
+		q.displacement();
+		cout<<endl<<endl;
+		q.Afficher();
+		cout<<endl;
+		cout<<endl;
+		for(unsigned int i = 0;i<q.moves.size();i++){
+			cout<<"				------- creation d'un fils-------		"<<endl<<endl;
+			Parking p1=q;
+			p1.positions.clear();
+			p1.situations.clear();
+			p1.moves.clear();
+			cout<<endl<<"le size de ma table moves "<<p1.moves.size()<<endl;
+			p1.Afficher();
+				
+			cout<<endl<<" le deplacement effectuer pos : "<<q.positions[i]<<" la direction  "<<q.moves[i].d<<" cela a ete effectuer "<<q.moves[i].nbr<<" fois . "<<endl;
+			
+			for(int k=0;k<q.moves[i].nbr;k++){
+			p1.deplacer(q.positions[i],q.moves[i].d);
+			}
+			p1.Afficher();			
 			auto ret=noeud.insert(p1);
 			//cout<<"j'insere mon parking dans la set et je retourne un iterateur"<<endl;
 			if(ret.second==true){ 

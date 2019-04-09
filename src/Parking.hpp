@@ -67,6 +67,8 @@ class Parking {
 	void movements();
 	void reset_table();
 	void moving_forward(int numvehicule);
+	void moving_backward(int numvehicule);
+	void displacement();	
 	bool operator < (const Parking& b) const{
 		for(unsigned int i=0;i<this->voitures.size();i++){
 			if(this->voitures[i]>b.voitures[i]){

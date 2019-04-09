@@ -188,24 +188,48 @@ void Parking::movements(){
 
 void Parking::moving_forward(int numvehicule){
 	int advance = 0;
-	int retreat = 0;	
+	vector<voiture> r=voitures;
 	while(peut_avancer(numvehicule)){
 		advance++;
 		mouvements m = {advance,voitures[numvehicule],avant};
 		moves.push_back(m);
 		positions.push_back(numvehicule);
 		deplacer(numvehicule,avant);
+		cout<<"apres application du deplacment "<<endl<<endl;		
+		Afficher();
 	}
-	reset_table();
+	voitures.clear();
+	voitures=r;
+	for(int i = 0 ; i<6;i++){
+		for(int j = 0 ;j<6;j++){
+			grille[i][j]=0;
+		}
+	}
+	met_a_jour_la_grille();
+}
+
+void Parking::moving_backward(int numvehicule){
+	int retreat = 0;
+	vector<voiture> r=voitures;
 	while(peut_reculer(numvehicule)){
 		retreat++;
 		mouvements m = {retreat,voitures[numvehicule],arriere};
 		moves.push_back(m);
 		positions.push_back(numvehicule);
 		deplacer(numvehicule,arriere);
+		cout<<"apres application du deplacment "<<endl<<endl;		
+		Afficher();
 	}
-	reset_table();
+	voitures.clear();
+	voitures=r;
+	for(int i = 0 ; i<6;i++){
+		for(int j = 0 ;j<6;j++){
+			grille[i][j]=0;
+		}
+	}
+	met_a_jour_la_grille();
 }
+
 
 void Parking::deplacement(int numvehicule,deplace d){
 	Afficher();
@@ -213,4 +237,17 @@ void Parking::deplacement(int numvehicule,deplace d){
 	Afficher();
 }
 
+void Parking::displacement(){
+	cout<<"cest rentrer dans la fct de displacement "<<endl;
+	vector<voiture> r=voitures;
+	for(unsigned int k = 0;k<voitures.size()-1;k++){		
+		moving_forward(k);
+		moving_backward(k);
+	}
+	for(unsigned int j = 0;j < moves.size() ; j++){
+		cout<<"le vehicule numero : "<<positions[j]<<" peut : "<<moves[j].d<<" de "<<moves[j].nbr<<" coup "<<endl;
+	}
+}
+
 Parking::~Parking(){}
+
