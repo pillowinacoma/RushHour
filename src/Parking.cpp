@@ -11,11 +11,14 @@ Parking::Parking(){
 	string fstline;
 	ifstream fichier("../Sujet/puzzle.txt",ios::in);
 	getline(fichier,fstline);
+	//creation de ma sortie	
 	out={fstline[0]-'0',fstline[1]-'0'};
+	//creation de mon tableau de voitures	
 	while(getline(fichier,s)){
 		voiture v={s[0]-'0',s[1]-'0',s[2]-'0',s[3]-'0'};
 		voitures.push_back(v);
 	}
+	//initialisation de ma grille
 	for(unsigned int i = 0 ; i < voitures.size()-1 ; i++){
 		if(voitures[i].position == 0){//vertical
 			for(int j = 0 ; j < voitures[i].longueur ; j++){
@@ -28,25 +31,6 @@ Parking::Parking(){
 			}
 		}
 	}
-}
-
-void Parking::reset_table(){
-	voitures.clear();
-	string fstline;
-	string s;
-	ifstream fichier("../Sujet/puzzle.txt",ios::in);
-	getline(fichier,fstline);
-	out={fstline[0]-'0',fstline[1]-'0'};
-	while(getline(fichier,s)){
-		voiture v={s[0]-'0',s[1]-'0',s[2]-'0',s[3]-'0'};
-		voitures.push_back(v);
-	}
-	for(int i = 0 ; i<6;i++){
-		for(int j = 0 ;j<6;j++){
-			grille[i][j]=0;
-		}
-	}
-	met_a_jour_la_grille();
 }
 
 	
@@ -109,14 +93,15 @@ void Parking::deplacer(int numvehicule,deplace d){
 bool Parking::peut_avancer(int numvehicule){
 	bool flag;
 	if(voitures[numvehicule].position == 0){//vertical
-		if(grille[voitures[numvehicule].ligne+voitures[numvehicule].longueur][voitures[numvehicule].colonne] == 0 && 				( voitures[numvehicule].ligne+voitures[numvehicule].longueur+1 <= 6 ) ){
+		if(( voitures[numvehicule].ligne+voitures[numvehicule].longueur+1 <= 6 ) 
+			&& grille[voitures[numvehicule].ligne+voitures[numvehicule].longueur][voitures[numvehicule].colonne] == 0 ){
 			flag=true;
 		}
 		else flag=false;
 	}
 	if(voitures[numvehicule].position == 1){//horizentale
-		if(grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne+voitures[numvehicule].longueur] == 0
-			&& (voitures[numvehicule].colonne+voitures[numvehicule].longueur+1 <= 6 )){
+		if((voitures[numvehicule].colonne+voitures[numvehicule].longueur+1 <= 6 )&&
+			grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne+voitures[numvehicule].longueur] == 0){
 			flag=true;
 		}
 		else flag=false;
@@ -127,15 +112,15 @@ bool Parking::peut_avancer(int numvehicule){
 bool Parking::peut_reculer(int numvehicule){
 	bool flag;
 	if(voitures[numvehicule].position == 0){//vertical
-		if(grille[voitures[numvehicule].ligne-1][voitures[numvehicule].colonne] == 0 &&
-			( voitures[numvehicule].ligne -1 >= 0  )){
+		if(( voitures[numvehicule].ligne -1 >= 0  )
+			&& grille[voitures[numvehicule].ligne-1][voitures[numvehicule].colonne] == 0){
 			flag=true;
 		}
 		else flag=false;
 	}
 	if(voitures[numvehicule].position == 1){//horizentale
-		if(grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne-1] == 0 &&
-			( voitures[numvehicule].colonne -1 >= 0  )){
+		if(( voitures[numvehicule].colonne -1 >= 0  ) && 
+			grille[voitures[numvehicule].ligne][voitures[numvehicule].colonne-1] == 0 ){
 			flag=true;
 		}
 		else flag=false;
@@ -146,41 +131,16 @@ bool Parking::peut_reculer(int numvehicule){
 void Parking::situation_de_jeu(){
 	for(unsigned int i=0;i<voitures.size()-1;i++){
 		if(peut_avancer(i)){
-			cout<<"la voiture "<<i<<" peut avancer "<<endl; 
+			cout<<"la voiture "<<i+1<<" peut avancer "<<endl; 
 			situation s = {voitures[i],avant};
 			situations.push_back(s);
 			positions.push_back(i);
 		}
 		if(peut_reculer(i)){
-			cout<<"la voiture "<<i<<" peut reculer "<<endl;
+			cout<<"la voiture "<<i+1<<" peut reculer "<<endl;
 			situation s = {voitures[i],arriere};
 			situations.push_back(s);
 			positions.push_back(i);
-		}
-	}
-	cout<<endl;
-}
-
-void Parking::movements(){
-	for(unsigned int i=0;i<voitures.size()-1;i++){
-		int tmp=0;
-		while(peut_avancer(i)){
-			tmp++;
-			cout<<"la voiture "<<i<<" peut avancer "<<tmp<<" fois ."<<endl; 
-			situation s = {voitures[i],avant};
-			mouvements m = { tmp,voitures[i],avant };
-			situations.push_back(s);
-			positions.push_back(i);
-			moves.push_back(m);
-		}
-		while(peut_reculer(i)){
-			tmp++;
-			cout<<"la voiture "<<i<<" peut reculer "<<tmp<<" fois ."<<endl;
-			situation s = {voitures[i],arriere};
-			mouvements m = {tmp,voitures[i],arriere};
-			situations.push_back(s);
-			positions.push_back(i);
-			moves.push_back(m);
 		}
 	}
 	cout<<endl;
@@ -195,8 +155,6 @@ void Parking::moving_forward(int numvehicule){
 		moves.push_back(m);
 		positions.push_back(numvehicule);
 		deplacer(numvehicule,avant);
-		cout<<"apres application du deplacment "<<endl<<endl;		
-		Afficher();
 	}
 	voitures.clear();
 	voitures=r;
@@ -217,7 +175,6 @@ void Parking::moving_backward(int numvehicule){
 		moves.push_back(m);
 		positions.push_back(numvehicule);
 		deplacer(numvehicule,arriere);
-		cout<<"apres application du deplacment "<<endl<<endl;		
 		Afficher();
 	}
 	voitures.clear();
@@ -230,22 +187,14 @@ void Parking::moving_backward(int numvehicule){
 	met_a_jour_la_grille();
 }
 
-
-void Parking::deplacement(int numvehicule,deplace d){
-	Afficher();
-	deplacer(numvehicule,d);
-	Afficher();
-}
-
 void Parking::displacement(){
-	cout<<"cest rentrer dans la fct de displacement "<<endl;
 	vector<voiture> r=voitures;
 	for(unsigned int k = 0;k<voitures.size()-1;k++){		
 		moving_forward(k);
 		moving_backward(k);
 	}
 	for(unsigned int j = 0;j < moves.size() ; j++){
-		cout<<"le vehicule numero : "<<positions[j]<<" peut : "<<moves[j].d<<" de "<<moves[j].nbr<<" coup "<<endl;
+		cout<<"le vehicule numero : "<<positions[j]+1<<" peut : "<<moves[j].d<<" de "<<moves[j].nbr<<" coup "<<endl;
 	}
 }
 

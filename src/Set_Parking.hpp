@@ -10,13 +10,17 @@
 class SetParking{
 	public:
 	Parking p;
+
 	SetParking();
-	SetParking(Parking p1);
+	
+	//la file utilisée pour empiler les nouveau fils crée
 	queue<Parking> Q;
+
+	//la structure qui contient tout les parking
 	set<Parking> noeud;
-	void CrerFils(Parking p);
-	void RemplirSet();
-	void afficherSet();
+
+	Parking CrerFils(Parking p);
+	
 };
 
 
