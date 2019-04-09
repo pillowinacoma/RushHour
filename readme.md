@@ -149,7 +149,7 @@ vous avez rendu. Votre correcteur aura ici plusieurs objectifs :
 * déterminer si vous êtes bien l'auteur du code rendu
 * déterminer si les contributions dans le binôme sont équilibrées
 
-#### Relecture
+### Relecture
 
 La relecture de votre code sera ensuite faite sans vous. Chaque correcteur sera
 muni d'une grille pour évaluer les points suivants :
