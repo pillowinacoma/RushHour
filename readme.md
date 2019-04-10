@@ -39,7 +39,7 @@ Implementation d'un solver de niveau du jeu Rush Hour
 ### Code Recap
 
 Main    :
-    + dans le main on charge la situation initiale du jeu, on affiche la grille (parking)<br />
+    <br />+ dans le main on charge la situation initiale du jeu, on affiche la grille (parking)<br />
     + on cherche les déplacements possibles (à un sel coup)<br />
     + on teste la fonction de déplacements<br />
     + on affiche pour montrer que le déplacement est effectué<br />
