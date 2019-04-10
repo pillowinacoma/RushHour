@@ -47,6 +47,7 @@ Main    :
     + on teste la fonction qui trouve tous les déplacements possibles (même à plusieurs coups)<br />
     + on lance le solveur<br />
     + on affiche la solution (le chemin)<br />
+    + on utilise le level generator pour generer un niveau bien compliqué(le meme algorithme fait 27 coups pour le resoudre) à partir d'une situation finale.<br />
 Classes :
 - Parking : la partie objet manipulable, un parking qui contient un ensemble de voitures.
  Cette classe contient tout les fonctions qui permettent de manipuler le parking (bouger les voitures, chercher une voiture, checker si on a une situation gagnante ...)
