@@ -18,14 +18,15 @@
 ### Équipe
 
 Equipe :
-- AZOUI Ayman
+- AZOUI Aymen
 - SBAAI Abdelaziz (pillowinacoma)
 
 
 <a name="encadrant"></a>
 ### Encadrant
 
-- Encadrant : vincent.nivoliers@univ-lyon1.fr
+- Encadrant :	Jean-Claude Iehl 
+		vincent.nivoliers@univ-lyon1.fr
 
 <a name="objectif"></a>
 ### Objectif
