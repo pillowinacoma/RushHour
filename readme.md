@@ -2,11 +2,14 @@
 
 ## Index
 
-    1. [Équipe](#equipe)
-    1. [Encadrant](#encadrant)
-    1. [Objectif](#objectif)
-    1. [Code Recap](#Code)
+1. [Introduction](#introduction)
+      * [Équipe](#equipe)
+      * [Encadrant](#encadrant)
+      * [Objectif](#objectif)
+      * [Code Recap](#Code)
 
+<a name="introduction"></a>
+## Introduction
 
 
 [//]: # "{{{"
