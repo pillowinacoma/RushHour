@@ -21,6 +21,9 @@ class SetParking{
 
 	//fct qui resou le rush_hour en 14 coups et renvoie le Parking gagnant 
 	Parking CrerFils(Parking p);
+
+	//fct qui resou le rush_hour en 32 coups et renvoie le Parking gagnant 
+	Parking CrerFilsGrand(Parking p);
 	
 };
 

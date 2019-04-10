@@ -175,7 +175,6 @@ void Parking::moving_backward(int numvehicule){
 		moves.push_back(m);
 		positions.push_back(numvehicule);
 		deplacer(numvehicule,arriere);
-		Afficher();
 	}
 	voitures.clear();
 	voitures=r;
@@ -193,15 +192,20 @@ void Parking::displacement(){
 		moving_forward(k);
 		moving_backward(k);
 	}
-	for(unsigned int j = 0;j < moves.size() ; j++){
+	/*for(unsigned int j = 0;j < moves.size() ; j++){
 		cout<<"le vehicule numero : "<<positions[j]+1<<" peut : "<<moves[j].d<<" de "<<moves[j].nbr<<" coup "<<endl;
-	}
+	}*/
 }
 
 void Parking::chemin_effectuer(){
 	cout<<" les mouvements effectuer pour arriver au dernier parking : "<<endl;
+	Parking p;
 	for(unsigned int k = 0 ; k < tab_deplacments.size() ; k++){
-		cout<<" la voiture : "<<tab_deplacments[k].indice<<" se deplace "<<tab_deplacments[k].nbr<<" vers la direction : "<<tab_deplacments[k].d<<endl;
+		cout<<" la voiture : "<<tab_deplacments[k].indice<<" se deplace "<<tab_deplacments[k].nbr<<" vers la direction : "<<((tab_deplacments[k].d == 0)?"avance":"recule")<<endl;
+		/*for(int m=0;m<tab_deplacments[k].nbr;m++){
+			p.deplacer(tab_deplacments[k].indice,tab_deplacments[k].d);
+		}
+		p.Afficher();*/
 	}
 }
 

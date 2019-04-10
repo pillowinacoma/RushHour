@@ -107,7 +107,7 @@ class Parking {
 	//les diferent deplacment que le vehicule peut effectuer a un coup
 	void situation_de_jeu();
 
-	//mise a jour de la grille d'affichage 
+	//mise a jour de la grille d'affichage a partire de mon tableau de vehicule
 	void met_a_jour_la_grille();
 
 	//verifie que le premier vehicule a les memes cordonneé que la sortie
