@@ -39,14 +39,14 @@ Implementation d'un solver de niveau du jeu Rush Hour
 ### Code Recap
 
 Main    :
-    - 1)dans le main on charge la situation initiale du jeu, on affiche la grille (parking)
-    - 2)on cherche les déplacements possibles (à un sel coup)
-    - 2)on teste la fonction de déplacements
-    - 2)on affiche pour montrer que le déplacement est effectué
-    - 2)on teste aussi les fonctions qui vérifient qu'une voiture peut avancer ou reculer
-    - 2)on teste la fonction qui trouve tous les déplacements possibles (même à plusieurs coups)
-    - 2)on lance le solveur
-    - 2)on affiche la solution (le chemin)
+    - dans le main on charge la situation initiale du jeu, on affiche la grille (parking)
+    - on cherche les déplacements possibles (à un sel coup)
+    - on teste la fonction de déplacements
+    - on affiche pour montrer que le déplacement est effectué
+    - on teste aussi les fonctions qui vérifient qu'une voiture peut avancer ou reculer
+    - on teste la fonction qui trouve tous les déplacements possibles (même à plusieurs coups)
+    - on lance le solveur
+    - on affiche la solution (le chemin)
 Classes :
 - 1) Parking : la partie objet manipulable, un parking qui contient un ensemble de voitures.
  Cette classe contient tout les fonctions qui permettent de manipuler le parking (bouger les voitures, chercher une voiture, checker si on a une situation gagnante ...)
