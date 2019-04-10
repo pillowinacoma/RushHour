@@ -2,18 +2,11 @@
 
 ## Index
 
-1. [Introduction](#introduction)
     * [Équipe](#equipe)
     * [Encadrant](#encadrant)
     * [Objectif](#objectif)
-    * [Compétences visées](#competences-visees)
-    * [Réalisation](#realisation)
-1. [Présentation du projet](#presentation-du-projet)
-    * [Installation](#installation)
-    * [Guide utilisateurs](#guide-utilisateur)
+    * [Code Recap](#Code)
 
-<a name="introduction"></a>
-## Introduction
 
 
 [//]: # "{{{"
@@ -44,7 +37,7 @@ Implementation d'un solver de niveau du jeu Rush Hour
 Classes :
 - 1) Parking : la partie objet manipulable, un parking qui contient un ensemble de voitures.
  Cette classe contient tout les fonctions qui permettent de manipuler le parking (bouger les voitures, chercher une voiture, checker si on a une situation gagnante ...)
-- 2) Set_Parking : C'est la partie qui s'occupe de la résolution du problème, 
+- 2) Set_Parking : C'est la partie qui s'occupe de la résolution du problème,
 
 
 [//]: # "}}}"
