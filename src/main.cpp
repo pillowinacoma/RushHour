@@ -40,11 +40,19 @@ int main() {
 	cout<<"<-----------------creation de ma set------------------>"<<endl<<endl;
 	SetParking s=SetParking();
 	//je resoue mon jeu et je renvoie le parking finale 
-	Parking res = s.CrerFils(p1);
+	Parking res = s.Solve1(p1);
 	cout<<"<-------------j'affiche mon parking final--------------->"<<endl<<endl;
 	res.Afficher();
 	cout<<"ce parking a éte résolue en : "<<res.valeur<<" coups "<<endl<<endl;
 	cout<<"<-------------j'affiche les coups effectuer pour arriver au dernier etat--------------->"<<endl<<endl;
 	res.chemin_effectuer();
+
+	cout<<endl<<"<------------------generateur de niveau------------------->"<<endl<<endl;
+	res.valeur=0;	
+	p1=s.level_generator(res);
+	cout<<"le shema le plus difficile a été trouver avec : "<<p1.valeur<<" coups "<<endl<<endl;
+	//affichage du parking le plus compliqué 
+	cout<<" le shema le plus compliqué que je peux obtenir a partire"
+	p1.Afficher();
 	return 0;
 }

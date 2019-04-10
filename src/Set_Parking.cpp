@@ -6,7 +6,7 @@ SetParking::SetParking(){
 
 
 //la fct qui resolve le jeu a 14 coup
-Parking SetParking::CrerFils(Parking p){
+Parking SetParking::Solve1(Parking p){
 	Parking r;
 	//j'insere le p dans ma set 
 	noeud.insert(p);
@@ -53,7 +53,7 @@ Parking SetParking::CrerFils(Parking p){
 
 //fait exactement le meme travail que la fct creefils mais avec plus de pas 32
 //elle utilise un tableau qui contient tout les deplacement possible a 1 coup
-Parking SetParking::CrerFilsGrand(Parking p){
+Parking SetParking::Solve2(Parking p){
 	noeud.insert(p);
 	Parking res;
 	Q.push(p);
@@ -75,6 +75,43 @@ Parking SetParking::CrerFilsGrand(Parking p){
 	}
 	if(Q.front().gagner() == true){
 		res=Q.front();
+	}
+	return res;
+}
+
+
+//je prend mon etat finale et j'essaye d'arriver au parking le plus compliqué que je peux crée
+Parking SetParking::level_generator(Parking p){
+	diff.insert(p);
+	Parking res;
+	int test = 0;
+	Qu.push(p);
+	while( (!Qu.empty()) /*&& (test<2)*/ ) {
+		Parking q = Qu.front();
+		//q.Afficher();
+		if(Qu.size()==1){res=Qu.front();}
+		Qu.pop();
+		q.displacement();
+		/*for(unsigned int zz=0;zz<q.moves.size();zz++){
+			cout<<"le vehicule numero "<<q.positions[zz]+1<<"peut ce deplacer : "<<q.moves[zz].nbr<<" fois vers : "<<q.moves[zz].d<<endl;
+		}*/
+		for(unsigned int i = 0;i<q.moves.size();i++){
+			Parking p1=q;
+			p1.positions.clear();
+			p1.moves.clear();
+			for(int k=0;k<q.moves[i].nbr;k++){
+				p1.deplacer(q.positions[i],q.moves[i].d);
+			}
+			//j'ajoute ce deplacement a la liste de deplamcent deja effectuer pour pouvoir garder une trace
+			deplacement_effectuer l={q.positions[i]+1,q.moves[i].nbr,q.moves[i].d};
+			p1.tab_deplacments.push_back(l);
+			auto ret=diff.insert(p1);
+			if(ret.second==true){
+				p1.valeur++;
+				Qu.push(p1);
+			}
+		}
+		test++;
 	}
 	return res;
 }
