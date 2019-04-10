@@ -22,7 +22,7 @@ class SetParking{
 	//la set utiliser pour retrouver le parking le plus compliqué
 	set<Parking> diff;
 
-	//la file utilisée pour empiler les nouveau fils crée
+	//la file utilisée pour empiler les nouveau fils crée pour generer les niveaux
 	queue<Parking> Qu;
 
 	//fct qui resou le rush_hour en 14 coups et renvoie le Parking gagnant 

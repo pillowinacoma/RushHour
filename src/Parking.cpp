@@ -202,10 +202,6 @@ void Parking::chemin_effectuer(){
 	Parking p;
 	for(unsigned int k = 0 ; k < tab_deplacments.size() ; k++){
 		cout<<" la voiture : "<<tab_deplacments[k].indice<<" se deplace "<<tab_deplacments[k].nbr<<" vers la direction : "<<((tab_deplacments[k].d == 0)?"avance":"recule")<<endl;
-		/*for(int m=0;m<tab_deplacments[k].nbr;m++){
-			p.deplacer(tab_deplacments[k].indice,tab_deplacments[k].d);
-		}
-		p.Afficher();*/
 	}
 }
 
