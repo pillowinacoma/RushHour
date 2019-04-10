@@ -2,10 +2,10 @@
 
 ## Index
 
-    * [Équipe](#equipe)
-    * [Encadrant](#encadrant)
-    * [Objectif](#objectif)
-    * [Code Recap](#Code)
+    1. [Équipe](#equipe)
+    1. [Encadrant](#encadrant)
+    1. [Objectif](#objectif)
+    1. [Code Recap](#Code)
 
 
 
