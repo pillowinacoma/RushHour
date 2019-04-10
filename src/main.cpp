@@ -52,7 +52,7 @@ int main() {
 	p1=s.level_generator(res);
 	cout<<"le shema le plus difficile a été trouver avec : "<<p1.valeur<<" coups "<<endl<<endl;
 	//affichage du parking le plus compliqué 
-	cout<<" le shema le plus compliqué que je peux obtenir a partire"
+	cout<<" le shema le plus compliqué que je peux obtenir a partir de ma solution"<<endl<<endl;
 	p1.Afficher();
 	return 0;
 }

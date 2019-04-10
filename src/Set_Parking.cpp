@@ -84,17 +84,12 @@ Parking SetParking::Solve2(Parking p){
 Parking SetParking::level_generator(Parking p){
 	diff.insert(p);
 	Parking res;
-	int test = 0;
 	Qu.push(p);
-	while( (!Qu.empty()) /*&& (test<2)*/ ) {
+	while( (!Qu.empty()) ) {
 		Parking q = Qu.front();
-		//q.Afficher();
 		if(Qu.size()==1){res=Qu.front();}
 		Qu.pop();
 		q.displacement();
-		/*for(unsigned int zz=0;zz<q.moves.size();zz++){
-			cout<<"le vehicule numero "<<q.positions[zz]+1<<"peut ce deplacer : "<<q.moves[zz].nbr<<" fois vers : "<<q.moves[zz].d<<endl;
-		}*/
 		for(unsigned int i = 0;i<q.moves.size();i++){
 			Parking p1=q;
 			p1.positions.clear();
@@ -111,7 +106,6 @@ Parking SetParking::level_generator(Parking p){
 				Qu.push(p1);
 			}
 		}
-		test++;
 	}
 	return res;
 }
