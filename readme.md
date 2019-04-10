@@ -48,9 +48,9 @@ Main    :
     - 7) on lance le solveur
     - 8) on affiche la solution (le chemin)
 Classes :
-- 1) Parking : la partie objet manipulable, un parking qui contient un ensemble de voitures.
+- Parking : la partie objet manipulable, un parking qui contient un ensemble de voitures.
  Cette classe contient tout les fonctions qui permettent de manipuler le parking (bouger les voitures, chercher une voiture, checker si on a une situation gagnante ...)
-- 2) Set_Parking : C'est la partie qui s'occupe de la résolution du problème,
+- Set_Parking : C'est la partie qui s'occupe de la résolution du problème,
 
 
 [//]: # "}}}"
